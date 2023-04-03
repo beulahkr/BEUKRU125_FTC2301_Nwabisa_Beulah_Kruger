@@ -1,11 +1,11 @@
 // nwabisa.js
 
-const firstnameN = "Nwabisa"
-const surnameN = "Gabe"
-const roleN = "CEO"
+const firstname = "Nwabisa"
+const surname = "Gabe"
+const role = "CEO"
 
-const displayN = firstnameN + " " + surnameN + " (" + roleN + ")"
+const display = firstname + " " + surname + " (" + role + ")"
 
-export {roleN}
+export {role}
 
-document.querySelector('[data-key="nwabisa"]').innerText = displayN
+document.querySelector('[data-key="nwabisa"]').innerText = display

@@ -1,9 +1,9 @@
 // johannes.js
 
-const firstnameJ = "Johannes"
-const surnameJ = "Potgieter"
-const roleJ = "Intern"
-export{roleJ}
+const firstname = "Johannes"
+const surname = "Potgieter"
+const role = "Intern"
+export{role}
 
-const displayJ= firstnameJ + " " + surnameJ + " (" + roleJ + ")"
-document.querySelector('[data-key="johannes"]').innerText = displayJ
+const display= firstname + " " + surname + " (" + role + ")"
+document.querySelector('[data-key="johannes"]').innerText = display
