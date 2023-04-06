@@ -9,9 +9,9 @@ const sarahBalance = '-4582.21000111'
 const divider = '----------------------------------'
 
 // Only change below this line
-const sBalance = (parseInt(sarahBalance)) * -1
-const lBalance = (parseInt(leoBalance)) * -1
-const owed = lBalance + sBalance
+const sBalance = (parseFloat(sarahBalance)) * -1
+const lBalance = (parseFloat(leoBalance)) * -1
+const owed = (lBalance + sBalance).toFixed(2)
 const leo = leoName + " " + leoSurname + " (Owed: " + "R " + lBalance.toFixed(2)
     + ")"
 const sarah = sarahName + " " + sarahSurname + " (Owed: " + "R " + sBalance.toFixed(2)
