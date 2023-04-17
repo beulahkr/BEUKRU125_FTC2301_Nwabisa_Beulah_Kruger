@@ -1,16 +1,15 @@
-const nickname = null;
-const firstname = null;
-
+const nickname = "Timmy";
+const firstname = "Timothy";
 
 if (firstname == null && nickname == null) {
-    console.log("Good Morning!")
-}
-else if (nickname == null) {
-    console.log("Good Morning, " + firstname)
+    console.log(`Good Morning!`)
+  
 }
 else {
-    console.log("Good Morning, " + nickname)
+    console.log(`Good Morning, ${nickname || firstname}!`)
+
 }
+
 
 
 

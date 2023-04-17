@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    border:0;
+}
+
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    color: #213677;
+}
+
+h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    color: #213677;
+}
+
+
+h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    color: #213677;
+}
+
+.orderForm{
+    display: flex;
+    flex-direction: column;
+    
+    column-width:auto;
+    border: 5px #213677;
+   
+    margin: 10%;
+    padding: 10%;
+    background-color: bisque;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:#213677;
+    justify-content: space-around;
+}
+
+
+.numberSelect{
+    justify-content: space-around;
+    border-color: black;
+    border: 20px;
+    border-radius: 0%;
+    width: 40px;
+    height: 30px;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+}

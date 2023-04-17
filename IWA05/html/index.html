@@ -5,9 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge 1</title>
+    <link rel="stylesheet" href="/IWA05/css/style.css">
     <script src="../scripts/script.js" ></script>
 </head>
 <body>
+    <header>
+        <h1>Welcome to the Shop</h1>
+    </header>
+    
+    <form class="orderForm">
+        <h2>Place Your Order: </h2>
+        <label for="shoes">Shoes R300 </label>
+        <input class="numberSelect"type="number" id="shoes" name="shoes" min="1" max="5">
+
+        <label for="toys">Toys R100 </label>
+        <input class="numberSelect" type="number" id="toys" name="toys" min="1" max="5">
+
+        <label for="shirts">Shirts R150 </label>
+        <input class="numberSelect" type="number" id="shirts" name="shirts" min="1" max="5">
+
+        <label for="batteries">Batteries R35 </label>
+        <input class="numberSelect" type="number" id="batteries" name="batteries" min="1" max="5">
+
+        <label for="pens">Pens R5 </label>
+        <input class="numberSelect" type="number" id="pens" name="pens" min="1" max="5">
+        <div>
+            <h3>Shipping Info</h3>
+            <select id="country" name="country">
+                <option value="rsa">RSA</option>
+                <option value="nam">NAM</option>
+                <option value="nk">NK</option>
+                <option value="other">Other(international)</option>
+            </select><br>
+            <label for="order">Place Order</label>
+            <input type="button" onclick="alert('Placing order')" value="Order">
+        </div>
+    </form>
     
 </body>
 </html>

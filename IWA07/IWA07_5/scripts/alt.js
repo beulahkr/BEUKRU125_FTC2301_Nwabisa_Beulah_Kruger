@@ -17,7 +17,7 @@ const owed = (lBalance + sBalance).toFixed(2)
 const thousand = owed / 1000;
 const hundred = owed % 1000;
 
-console.log(thousand + "," + hundred)
+console.log(thousand.toFixed(0) + "," + hundred.toFixed(2))
 
 const leo = leoName + " " + leoSurname + " (Owed: " + "R " + lBalance.toFixed(2)
     + ")"
