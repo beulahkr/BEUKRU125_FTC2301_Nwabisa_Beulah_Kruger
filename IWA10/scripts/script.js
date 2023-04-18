@@ -52,10 +52,12 @@ const christmas = 6
 const futureId = 9
 
 // Do not change code above this comment
-const copyDate = new Date(holidays[0].date)
+const copyDate = new Date(holidays[0].date)   //create a copy of first date 
+                                             //but formatted as a date not a string
+
 console.log(holidays[futureId] ? holidays[futureId] : `ID ${futureId} not created yet`)
 
-const originalDate = holidays[6].date
+const originalDate = holidays[6].date  //create a copy of christmas property so that it may be edited
 const copied = holidays[christmas]
 
 copied.date = new Date(`25 December ${currentYear}`)
@@ -74,15 +76,15 @@ console.log('New date is earlier:', isEarlier)
 
 
 let padDate = (copied.date.getDate()).toString()
+padDate = padDate.padStart(2, '0')  
 
-padDate = padDate.padStart(2, '0')
 console.log('ID change:', holidays[christmas].id != copied.id || copied.id)
 console.log('Name change:', holidays[christmas].name != copied.name || copied.name)
 console.log('Date change:', holidays[christmas].date != copied.date || padDate + '/'
                 + (copied.date.getMonth() + 1)+'/'+copied.date.getFullYear())
 
 const firstHolidayTimestamp = new Date(Math.min(
-    copyDate,
+    copyDate,    // replaces "holidays[0].date" with properly formatted date
     holidays[1].date,
     holidays[2].date,
     holidays[3].date,
@@ -108,17 +110,15 @@ const lastHolidayTimestamp = new Date(Math.max(
 const firstDay = ((firstHolidayTimestamp.getDate().toString())).padStart(2, '0')
 let firstMonth = (firstHolidayTimestamp.getMonth()+1).toString()
 firstMonth = firstMonth.padStart(2, '0')
+console.log(`${firstDay}/${firstMonth}/${currentYear}`)
+
 const lastDay = ((lastHolidayTimestamp.getDate()).toString()).padStart(2, '0')
 let lastMonth = (lastHolidayTimestamp.getMonth() + 1).toString()
 lastMonth = lastMonth.padStart(2, '0')
-
-
-console.log(`${firstDay}/${firstMonth}/${currentYear}`)
 console.log(`${lastDay}/${lastMonth}/${currentYear}`)
 
 const randomHoliday = holidays[Math.floor(Math.random() * 9)].date
 const randomDay = ((randomHoliday.getDate()).toString()).padStart(2, '0')
 let randomMonth = (randomHoliday.getMonth() + 1).toString()
 randomMonth = randomMonth.padStart(2, '0')
-
 console.log(`${randomDay}/${randomMonth}/${currentYear}`)
