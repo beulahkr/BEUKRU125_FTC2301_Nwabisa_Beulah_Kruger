@@ -18,7 +18,6 @@ const example1 = {
 		c: 8,
 	},
     add,
-    
 	multiply,
   calculate: internal
 }
