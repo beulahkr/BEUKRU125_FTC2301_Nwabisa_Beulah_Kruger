@@ -32,17 +32,15 @@ const createData = () => {          //data of days and weeks in particular month
     current.setDate(1);
 
     const startDay = current.getDay();
-    console.log(startDay)
     const daysInMonth = getDaysInMonth(current);
-    console.log(daysInMonth)
-    const weeks = createArray(5);
+    const weeks = createArray(6);
     const days = createArray(7);
     let value = null;
-    const result = [];
+    const result = [];      //array to store 
 
-    for (let weekIndex = 1; weekIndex < weeks.length; weekIndex++) {
+    for (let weekIndex = 0; weekIndex < weeks.length; weekIndex++) {
         value = {
-            week: weekIndex +1,
+            week: weekIndex +1 ,
             days: [],
         };
 
@@ -51,16 +49,18 @@ const createData = () => {          //data of days and weeks in particular month
             console.log(day)
             const isValid = day > 0 && day <= daysInMonth;
 
-            value.days.push({
+            value.days.unshift({
                 dayOfWeek: dayIndex ,
                 value: isValid ? day : '',
             });
+            console.log(value.days)
         }
 
         result.push(value);
     }
-
+console.log(result)
     return result;
+    
 };
 
 const addCell = (existing, classString, value) => {
