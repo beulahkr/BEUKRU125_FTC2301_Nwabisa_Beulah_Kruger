@@ -68,15 +68,17 @@ const MONTHS = [
   // Only edit below this comment
   
   const createHtml = (athlete) => {
-      const { firstName, surname, id, races } = data.response.data[athlete]
-      races.reverse()
+    const { firstName, surname, id, races } = data.response.data[athlete]
+    races.reverse()
     const date = new Date(races[0].date)
     const time = races[0].time
   
     const fragment = document.createDocumentFragment();
   
     const title = document.createElement("h2");
-    title.textContent= data.response.data[athlete].id
+
+    title.textContent = data.response.data[athlete].id
+    
     fragment.appendChild(title);
   
     const list = document.createElement("dl");
@@ -89,7 +91,7 @@ const MONTHS = [
     let total = first + second + third + fourth;
   
     const hours = Math.floor(total / 60);
-    const minutes = total
+    const minutes = (total%60)
   
     list.innerHTML = /* html */ `
     <dt>Athlete</dt>
@@ -111,7 +113,8 @@ const MONTHS = [
   }
   
   
-const { NM372: { id: NM372 }, SV782: {id: SV782} } = data.response.data
+const { NM372: { id: NM372 }, SV782: { id: SV782 } } = data.response.data
+
 
 document.querySelector('[data-athlete="NM372"]').appendChild(createHtml(NM372));
 document.querySelector('[data-athlete="SV782"]').appendChild(createHtml(SV782));

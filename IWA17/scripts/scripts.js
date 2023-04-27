@@ -12,9 +12,10 @@ const MONTHS = [
     'November',
     'December',
 ];
-
+//gets number of days in that month (april=30days)
 const getDaysInMonth = (date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-
+const red = new Date()
+console.log(red)
 // Only edit below
 
 const createArray = (length) => {               //for days and weeks array
@@ -27,17 +28,18 @@ const createArray = (length) => {               //for days and weeks array
     return result;
 };
 
-const createData = () => {          //data of days and weeks in particular month +
+const createData = () => {          //data of days and weeks in particular month 
     const current = new Date();
+    
     current.setDate(1);
-
     const startDay = current.getDay();
     const daysInMonth = getDaysInMonth(current);
     const weeks = createArray(6);
     const days = createArray(7);
-    let value = null;
-    const result = [];      //array to store 
 
+    let value = null;
+    const result = [];      //array to store 'data' as in each week and each day
+                            //with corresponding place 
     for (let weekIndex = 0; weekIndex < weeks.length; weekIndex++) {
         value = {
             week: weekIndex +1 ,
@@ -50,7 +52,7 @@ const createData = () => {          //data of days and weeks in particular month
             const isValid = day > 0 && day <= daysInMonth;
 
             value.days.unshift({
-                dayOfWeek: dayIndex ,
+                dayOfWeek: dayIndex  ,
                 value: isValid ? day : '',
             });
             console.log(value.days)
@@ -81,7 +83,6 @@ const createHtml = (data) => {
     for (let i = 0; i < data.length; i++) {
         const week = data[i];
         let inner = '';
-        inner = addCell(inner, 'table__cell table__cell_sidebar', `Week ${week.week}`);
 
         for (let j = 0; j < week.days.length; j++) {
             const day = week.days[j];
@@ -104,6 +105,8 @@ const createHtml = (data) => {
 
             inner = addCell(inner, classString, day.value);
         }
+        inner = addCell(inner, 'table__cell table__cell_sidebar', `Week ${week.week}`);
+
 
         result += `<tr>${inner}</tr>`;
     }

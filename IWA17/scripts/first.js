@@ -75,8 +75,8 @@ const createHtml = (data) => {
         addCell(inner, 'table__cell table__cell_sidebar', 'Week {week}')
     
         for (dayOfWeek, value in days) {
-            classString = table__cell
-						isToday = new Date === value
+            
+			isToday = new Date === value
             isWeekend = dayOfWeek = 1 && dayOfWeek == 7
             isAlternate = week / 2
 

@@ -11,9 +11,11 @@ const data = {
 // Only edit below
 
 const result = []
+
 const first = data.lists[0][1]
 const second = data.lists[1][1]
 const third = data.lists[2][1]
+
 
 
 const extractBiggest = () => {
