@@ -14,8 +14,7 @@ const MONTHS = [
 ];
 //gets number of days in that month (april=30days)
 const getDaysInMonth = (date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-const red = new Date()
-console.log(red)
+
 // Only edit below
 
 const createArray = (length) => {               //for days and weeks array
@@ -30,13 +29,11 @@ const createArray = (length) => {               //for days and weeks array
 
 const createData = () => {          //data of days and weeks in particular month 
     const current = new Date();
-    
     current.setDate(1);
     const startDay = current.getDay();
     const daysInMonth = getDaysInMonth(current);
     const weeks = createArray(6);
     const days = createArray(7);
-
     let value = null;
     const result = [];      //array to store 'data' as in each week and each day
                             //with corresponding place 
@@ -50,19 +47,16 @@ const createData = () => {          //data of days and weeks in particular month
             const day = (weekIndex * 7) + dayIndex - startDay + 1;
             console.log(day)
             const isValid = day > 0 && day <= daysInMonth;
-
             value.days.unshift({
                 dayOfWeek: dayIndex  ,
                 value: isValid ? day : '',
             });
             console.log(value.days)
         }
-
         result.push(value);
     }
 console.log(result)
-    return result;
-    
+return result;    
 };
 
 const addCell = (existing, classString, value) => {
@@ -88,7 +82,7 @@ const createHtml = (data) => {
             const day = week.days[j];
             let classString = 'table__cell';
             const isToday = new Date().getDate() === day.value;
-            const isWeekend = day.dayOfWeek === 1 || day.dayOfWeek === 7;
+            const isWeekend = day.dayOfWeek === 0 || day.dayOfWeek === 6;
             const isAlternate = week.week % 2 === 0;
 
             if (isToday) {
