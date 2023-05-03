@@ -1,5 +1,5 @@
-import { html, createOrderHtml, moveToColumn } from "./view.js";
-import { createOrderData } from "./data.js";
+import{html, createOrderHtml, updateDraggingHtml, moveToColumn  } from './view.js'
+import{createOrderData, updateDragging, state } from './data.js'
 
 /**
  * A handler that fires when a user drags over any element inside a column. In
@@ -14,7 +14,7 @@ import { createOrderData } from "./data.js";
  */
 const handleDragOver = (event) => {
     event.preventDefault();
-    const path = event.path || event.composedPath()
+    const path = event.path || event.composedPath() 
     let column = null
 
     for (const element of path) {
@@ -30,16 +30,23 @@ const handleDragOver = (event) => {
     updateDraggingHtml({ over: column })
 } 
 
-
+let draggedItem
+let id 
 const handleDragStart = (event) => {
-    event.preventDefault()
-    const selected = event.target.closest('.order')
-    
-
+    draggedItem = event.target.closest(".order");
+    state.dragging.source = state.dragging.over;
+    id = draggedItem.dataset.id;
 }
 const handleDragEnd = (event) => {
-
+    event.preventDefault();
+    const moveTo = state.dragging.over;
+    moveToColumn(id, moveTo);
+    updateDraggingHtml({over: null})
 }
+/**
+ * Shows Help overlay when the help button is clicked
+ * and closes the dialog when close is clicked
+ */
 const handleHelpToggle = () => {
     const dialog = document.querySelector('[data-help-overlay]');
     
@@ -65,7 +72,10 @@ const handleAddToggle = () => {
         dialog.setAttribute('open', true);
     }
   };
-  
+  /**Copies data from the form and creates a div in html with the new data.
+   * Also uses handleAddToggle() to close the overlay after the form has been submitted
+   * for a smoother experience
+   */
 const handleAddSubmit = (event) => {
     event.preventDefault();
     const data = {
@@ -82,16 +92,23 @@ const handleAddSubmit = (event) => {
 
 }
 
-
+//Two global variables 'order' and 'dialog' declared outside of the functions as they are needed 
+// in the three following functions in conjunction with each other 
 let order
 const dialog = document.querySelector('[data-edit-overlay]')
 
+/**Opens the edit form when an order item is clicked on.
+ * Automatically has the current information for that order
+ * in the input fields of the form. 
+ * Also closes the form if cancel is selected and the order will be unchanged
+ */
 const handleEditToggle = (event) => {
     event.preventDefault();
 
     if (dialog.hasAttribute('open')) {
         dialog.removeAttribute('open');
-    } else {
+    }
+    else {
         order = event.target.closest('.order')
         const orderTitle = order.querySelector('[data-order-title]').innerText
         const orderTable = order.querySelector('[data-order-table]').innerText
@@ -103,8 +120,13 @@ const handleEditToggle = (event) => {
     }
 
 }
+
+/**Creates a new order object using the data from the edit overlay form. 
+ * Ensures that the item is placed in the correct column and automatically closes the 
+ * edit overlay after data is submitted.
+ */
 const handleEditSubmit = (event) => {
-event.preventDefault();
+    event.preventDefault();
     order.remove()
     const data = {
         title: html.edit.title.value,
@@ -115,9 +137,14 @@ event.preventDefault();
     const content = createOrderHtml(props)
     const editColumn = document.querySelector(`[data-area="${data.column}"]`);
     const orderedDiv = editColumn.querySelector(`[data-column="${data.column}"]`);
+
     orderedDiv.appendChild(content)
     dialog.removeAttribute('open')
 }
+
+/**Deletes the selected order item and automatically closes the
+ * edit overlay at the same time
+ */
 const handleDelete = (event) => {
     event.preventDefault();
     order.remove()
