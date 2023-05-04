@@ -33,13 +33,13 @@ const handleDragOver = (event) => {
 let draggedItem
 let id 
 const handleDragStart = (event) => {
-    draggedItem = event.target.closest(".order");
+    draggedItem = event.target.closest(".order"); //selects the order div that was clicked on
     state.dragging.source = state.dragging.over;
-    id = draggedItem.dataset.id;
+    id = draggedItem.dataset.id; //stores the unique id of that item to use in the moveToColumn fun
 }
 const handleDragEnd = (event) => {
     event.preventDefault();
-    const moveTo = state.dragging.over;
+    const moveTo = state.dragging.over; //
     moveToColumn(id, moveTo);
     updateDraggingHtml({over: null})
 }
@@ -88,6 +88,8 @@ const handleAddSubmit = (event) => {
     const orderedColumn = document.querySelector('[data-area="ordered"]');
     const orderedDiv = orderedColumn.querySelector('[data-column="ordered"]');
     orderedDiv.appendChild(content)
+    html.add.title.value = ''
+    html.add.table.value = 1
     handleAddToggle();
 
 }

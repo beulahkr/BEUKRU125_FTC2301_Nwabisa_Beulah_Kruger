@@ -32,7 +32,7 @@ const createData = () => {          //data of days and weeks in particular month
     current.setDate(1);
     const startDay = current.getDay();
     const daysInMonth = getDaysInMonth(current);
-    const weeks = createArray(6);
+    const weeks = createArray(5);
     const days = createArray(7);
     let value = null;
     const result = [];      //array to store 'data' as in each week and each day
