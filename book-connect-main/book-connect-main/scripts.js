@@ -75,7 +75,7 @@ data-list-button.innerHTML = /* html */ [
 ]
 
 data-search-cancel.click() { data-search-overlay.open === false }
-data-settings-cancel.click() { querySelect(data-settings-overlay).open === false }
+data-settings-cancel.click() { querySelector(data-settings-overlay).open === false }
 data-settings-form.submit() { actions.settings.submit }
 data-list-close.click() { data-list-active.open === false }
 
