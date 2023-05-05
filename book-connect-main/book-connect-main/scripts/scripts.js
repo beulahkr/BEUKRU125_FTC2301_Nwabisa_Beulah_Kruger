@@ -38,6 +38,7 @@ const loadBooks = (event) => {
 }
 html.list.button.addEventListener('click', loadBooks)
 window.addEventListener('load', loadBooks)
+
 /**Event listener which displays the preview for each book that is 
  * displayed in window. Function is defined inside the event listener
  * because it needs to work for multiple buttons.
@@ -53,7 +54,6 @@ document.addEventListener('click', (event) => {
         }
         const book = books.find(book => book.id === button.id)
         const year = new Date(book.published).getFullYear()
-        console.log(year)
         const title = html.list.overlay.title
         title.innerText = book.title
         const image = book.image
@@ -67,8 +67,9 @@ document.addEventListener('click', (event) => {
         subtitle.innerText = `${authors[book.author]} (` + `${year})`
         html.list.overlay.active.setAttribute('open', true)
     }
-  })
-
+})
+  
+/**Opens and closes search overlay */
 const handleSearchToggle = (event) => {
     event.preventDefault();
     if (html.search.dialog.hasAttribute('open')) {
@@ -77,11 +78,10 @@ const handleSearchToggle = (event) => {
         html.search.dialog.setAttribute('open', true)
     }
 }
-
 html.search.button.addEventListener('click', handleSearchToggle)
 html.search.cancel.addEventListener('click', handleSearchToggle)
 
-
+/**Opens and closes settings overlay */
 const handleSettingsToggle = (event) => {
     event.preventDefault();
     if (html.settings.dialog.hasAttribute('open')) {
@@ -90,10 +90,11 @@ const handleSettingsToggle = (event) => {
         html.settings.dialog.setAttribute('open', true)
     }
 }
-
 html.settings.button.addEventListener('click', handleSettingsToggle)
 html.settings.cancel.addEventListener('click', handleSettingsToggle)
 
+/**Saves selected theme and changes colors to light or dark 
+ * depending on saved selection */
 const handleSettingsSave = (event) => {
     event.preventDefault();
     console.log(html.settings.theme.value)
@@ -109,6 +110,9 @@ const handleSettingsSave = (event) => {
 }
 html.settings.save.addEventListener('click', handleSettingsSave)
 
+/**Adds values from the genres object in data.js to the select
+ * element on the search overlay
+  */
 const createGenreOptionsHtml = (event) => {
     event.preventDefault();
     const fragment = document.createDocumentFragment();
@@ -122,10 +126,10 @@ const createGenreOptionsHtml = (event) => {
 
     html.search.genre.appendChild(fragment);
 };
-
 html.search.button.addEventListener('click', createGenreOptionsHtml)
 
-
+/**Adds values from the authors object in data.js to the select
+ * element on the search overlay */
 const createAuthorOptionsHtml = (event) => {
     event.preventDefault();
     const fragment = document.createDocumentFragment();
@@ -142,6 +146,10 @@ const createAuthorOptionsHtml = (event) => {
 };
 html.search.author.addEventListener('click', createAuthorOptionsHtml)
 
+/**Creates an array of search results by taking the input values from the search 
+ * overlay and creates an object named 'search'. Filters through title, genre and author
+ * and selects matches from the books object in data.js
+*/
 const handleSearchSubmit = (event) => {
     event.preventDefault();
     const search = {
@@ -170,13 +178,15 @@ const handleSearchSubmit = (event) => {
     html.search.genre.value = 'All genres'
     html.search.author.value = 'All authors'
     html.search.title.value = ''
+    console.log(found)
     return handleSearchResults(found[0])
 }
-  
-  
-
 html.search.submit.addEventListener('click', handleSearchSubmit)
 
+/**Creates search result elements using the results from handleSearchSubmit(). 
+ * Shows the results in the main body, unless no results are found in which case
+ * an error message shall appear
+ */
 const handleSearchResults = (found) => {
 
     if (typeof found === 'undefined') {
