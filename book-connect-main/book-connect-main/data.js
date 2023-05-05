@@ -1,7 +1,7 @@
 
-BOOKS_PER_PAGE = 36;
+export const BOOKS_PER_PAGE = 36;
 
-authors = {
+export const authors = {
   "194e164b-9365-4358-b44a-f28a93cc528f": "Steven D. Levitt",
   "76e8065c-fd7a-4a8b-a8ea-6105a47d0781": "Stephen J. Dubner",
   "6b092ae7-283c-45db-80f1-f0cc7e0d4921": "Bill Bryson",
@@ -91,7 +91,7 @@ authors = {
   "37018341-31f4-4ffa-8755-a49979c218dd": "Suzanne Collins"
 }
 
-genres = {
+export const genres = {
   "a4f80b3e-3e96-4266-b729-e09b71793182": "Economics",
   "6dd5bb6e-0172-4d6e-aa18-26f00954dd7a": "Non-fiction",
   "5439a895-20a8-421a-981d-43f99b521cb5": "Business",
@@ -162,10 +162,10 @@ genres = {
   "64c4197d-5f8e-4bff-b440-6d19bc591fd9": "Magic"
 }
 
-books = [
+export const books = [
   {
     "id": "760b3450-9c86-42d0-8eff-e793bf823756",
-    "genres": [
+    "genres": [ 
       "6dd5bb6e-0172-4d6e-aa18-26f00954dd7a",
       "c60e7571-371f-4985-a3eb-97f7d3330e92",
       "39ca8a42-15aa-4774-ad4a-eda304b6ad56",
@@ -25411,3 +25411,46 @@ books = [
     "author": "8e7083f4-7613-4872-a21b-62fbe33fe180"
   }
 ]
+
+export const html = {
+  
+  settings: {
+    button: document.querySelector('[data-header-settings]'),
+    dialog: document.querySelector('[data-settings-overlay]'),
+    form: document.querySelector('[data-settings-form]'),
+    theme: document.querySelector('[data-settings-theme]'),
+    cancel: document.querySelector('[data-settings-cancel]'),
+    save: document.querySelector('[data-settings-save]')
+  },
+ 
+  search: {
+      button: document.querySelector('[data-header-search]'),
+      dialog: document.querySelector('[data-search-overlay]'),
+      cancel: document.querySelector('[data-search-cancel]'),
+      form: document.querySelector('[data-search-form]'),
+      title: document.querySelector('[data-search-title]'),
+      genre: document.querySelector('[data-search-genres]'),
+      author: document.querySelector('[data-search-authors]'),
+      submit: document.querySelector('[data-search-submit]')
+  },
+  
+  list: {
+    items: document.querySelector('[data-list-items]'),
+    message: document.querySelector('[data-list-message]'),
+    button: document.querySelector('[data-list-button]'),
+    preview: document.querySelectorAll('.preview'),
+    overlay: {
+      active: document.querySelector('[data-list-active]'),
+      blur: document.querySelector('[data-list-blur]'),
+      title: document.querySelector('[data-list-title]'),
+      subtitle: document.querySelector('[data-list-subtitle]'),
+      description: document.querySelector('[data-list-description]'),
+      close: document.querySelector('[data-list-close]'),
+      image: document.querySelectorAll('[data-list-image]')
+
+  }
+  },
+
+  
+
+}
